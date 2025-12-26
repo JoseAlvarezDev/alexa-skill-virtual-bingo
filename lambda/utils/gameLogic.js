@@ -1,11 +1,12 @@
 const { BINGO_PHRASES, AMBIENT_PHRASES } = require('../data/bingoData');
 
 /**
- * Genera un número aleatorio que no haya sido usado
+ * Genera un número aleatorio que no haya sido usado (Bingo 90: de 1 a 90)
  */
 function drawNumber(usedNumbers) {
     const availableNumbers = [];
-    for (let i = 0; i <= 99; i++) {
+    // Bingo tradicional español: bolas del 1 al 90
+    for (let i = 1; i <= 90; i++) {
         if (!usedNumbers.includes(i)) {
             availableNumbers.push(i);
         }
@@ -62,7 +63,7 @@ function verifyWinningCard(calledNumbers, playerNumbers) {
 /**
  * Obtiene estadísticas de la partida actual
  */
-function getGameStats(usedNumbers, totalNumbers = 100) {
+function getGameStats(usedNumbers, totalNumbers = 90) {
     const called = usedNumbers.length;
     const remaining = totalNumbers - called;
     const progress = Math.round((called / totalNumbers) * 100);
